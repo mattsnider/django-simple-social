@@ -69,10 +69,10 @@ To begin the oauth process with a social network, expose the following link to a
 Todo
 ====
 
-#. Support facebook
-#. Support google
-#. Support openid
-#. Support twitter
-#. Better error handling
-#. Asynchronous/JS driven authentication, instead of browser redirects
-#. Decouple APIs from this infrastructure and allow API customization
+1. Support facebook
+2. Support google
+3. Support openid
+4. Support twitter
+5. Better error handling
+6. Asynchronous/JS driven authentication, instead of browser redirects
+7. Decouple APIs from this infrastructure and allow API customization
