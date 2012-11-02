@@ -2,7 +2,7 @@
 django>=1.3
 
 # social infrastructure library
-git+https://github.com/mattsnider/django-social-user.git#egg=django_social_user
+django_social_user
 
 # social network libraries
-git+https://github.com/mattsnider/LinkedIn-API-JSON-Client.git#egg=linkedin_json_client
+linkedin_json_client

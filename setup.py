@@ -13,7 +13,7 @@ sdict = dict(
     version='.'.join(map(str, __import__('django_simple_social').__version__)),
     description = 'A generic system for interacting with remote APIs '
                   'that need to create Django socials.',
-    long_description=open('README.md').read(),
+    long_description=open('README').read(),
     url = 'https://github.com/mattsnider/Django-Simple-Social',
     author = 'Matt Snider',
     author_email = 'admin@mattsnider.com',
