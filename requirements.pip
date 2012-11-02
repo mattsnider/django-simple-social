@@ -1,8 +1,0 @@
-# framework required for work with this library
-django>=1.3
-
-# social infrastructure library
-django_social_user
-
-# social network libraries
-linkedin_json_client

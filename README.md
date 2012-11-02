@@ -17,7 +17,7 @@ Getting started
 
 Standard stuff applies to install. Use PIP to install with dependencies:
 
-    pip install git+https://github.com/mattsnider/Django-Simple-Social.git#egg=django_simple_social
+    pip install django-simple-social
 
 Or install from the command line:
 

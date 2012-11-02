@@ -3,16 +3,9 @@ import os, sys
 
 ROOT_DIR = os.path.abspath(os.path.dirname(__file__))
 
-def get_deps():
-    f = open(os.path.join(ROOT_DIR, "requirements.pip"), 'r')
-    return [l[:-1] for l in f.readlines()]
-
 # README is required for distribution, but README.md is required for github,
 #   so create README temporarily
-is_distribution = 'sdist' in sys.argv or 'bdist_wininst' in sys.argv
-
-if is_distribution:
-    os.system('cp %s/README.md %s/README' % (ROOT_DIR, ROOT_DIR))
+os.system('cp %s/README.md %s/README.txt' % (ROOT_DIR, ROOT_DIR))
 
 sdict = dict(
     name = 'django-simple-social',
@@ -28,7 +21,16 @@ sdict = dict(
     maintainer_email = 'admin@mattsnider.com',
     keywords = ['simple', 'social', 'linkedin', 'facebook', 'twitter'],
     license = 'MIT',
-    install_requires=get_deps(),
+    install_requires=[
+        # framework required for work with this library
+        'django>=1.3',
+
+        # social infrastructure library
+        'django-social-user',
+
+        # social network libraries
+        'linkedin-api-json-client'
+    ],
     classifiers=[
         'Programming Language :: Python',
         'License :: OSI Approved :: MIT License',
@@ -44,5 +46,4 @@ from distutils.core import setup
 setup(**sdict)
 
 # cleanup README
-if is_distribution:
-    os.remove('%s/README' % ROOT_DIR)
+os.remove('%s/README.txt' % ROOT_DIR)
