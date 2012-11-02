@@ -29,7 +29,8 @@ sdict = dict(
         'django-social-user',
 
         # social network libraries
-        'linkedin-api-json-client'
+        'linkedin-api-json-client',
+        'twython',
     ],
     classifiers=[
         'Programming Language :: Python',

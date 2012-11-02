@@ -1,6 +1,6 @@
 __author__ = 'mattesnider'
 
-__version__ = (0, 1, 3)
+__version__ = (0, 1, 6)
 
 
 def autodiscover():
