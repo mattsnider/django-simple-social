@@ -29,6 +29,7 @@ sdict = dict(
         'django-social-user',
 
         # social network libraries
+        'facebook-sdk',
         'linkedin-api-json-client',
         'twython',
     ],
