@@ -112,7 +112,12 @@ class FacebookBackend(GenericSocialUserBackend):
         return 1
 
     def get_username(self, oauth_obj):
-        return oauth_obj['username']
+        # If the Facebook account data does not contain a username (Facebook
+        # test users can't have usernames) use the id instead.
+        if 'username' in oauth_obj:
+            return oauth_obj['username']
+        else:
+            return oauth_obj['id']
 register_backend(FacebookBackend)
 
 
