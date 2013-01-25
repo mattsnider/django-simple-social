@@ -87,9 +87,11 @@ class FacebookBackend(GenericSocialUserBackend):
         return data['access_token'], datetime.now() + timedelta(
             milliseconds=int(data['expires']))
 
-    def get_oauth_authorization_url(self, oauth_request_token, url_prefix=''):
+    def get_oauth_authorization_url(self, oauth_request_token, url_prefix='', params={}):
+        if 'scope' in params:
+            perms = params['scope'].split(',')
         return facebook.auth_url(
-            self.facebook_ck, self.get_callback_url(url_prefix))
+            self.facebook_ck, self.get_callback_url(url_prefix), perms=perms)
 
     def get_oauth_dict(self, access_token):
         """
@@ -172,7 +174,7 @@ class LinkedInBackend(GenericSocialUserBackend):
         return self.client.get_access_token(
             oauth_request_token, oauth_verifier), None
 
-    def get_oauth_authorization_url(self, oauth_request_token, url_prefix=''):
+    def get_oauth_authorization_url(self, oauth_request_token, url_prefix='', params={}):
         return u'%s?%s' % (
             self.client.authorize_path, urlencode(oauth_request_token))
 
@@ -277,7 +279,7 @@ class TwitterBackend(GenericSocialUserBackend):
 
         return client.get_authorized_tokens(), None
 
-    def get_oauth_authorization_url(self, oauth_request_token, url_prefix=''):
+    def get_oauth_authorization_url(self, oauth_request_token, url_prefix='', params={}):
         return oauth_request_token['auth_url']
 
     def get_oauth_dict(self, access_token):
