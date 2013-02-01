@@ -36,9 +36,25 @@ There many dependencies for this library, because it requires APIs for working w
 Usage Guide
 ===========
 
+Add to both dependencies to your INSTALLED_APPS:
+
+    INSTALLED_APPS = [
+        ...
+        'django_simple_social',
+        'django_social_user',
+        ...
+    ]
+    
+Update the DB:
+
+    python manage.py sqlall django_social_user > temp.sql
+    python manage.py manage.py dbshell < temp.sql
+    rm temp.sql
+
 Register any social network backends you want to use in your settings.py:
 
     AUTHENTICATION_BACKENDS = (
+        'django_simple_social.backends.FacebookBackend',
         'django_simple_social.backends.LinkedInBackend',
         'django_simple_social.backends.TwitterBackend',
         ...
@@ -46,6 +62,8 @@ Register any social network backends you want to use in your settings.py:
 
 Add any required API keys (backend dependent) to settings.py, here are some examples:
 
+    FACEBOOK_CONSUMER_KEY = 'asdf'
+    FACEBOOK_CONSUMER_SECRET = 'asdf'
     LINKED_IN_CONSUMER_KEY = 'asdf'
     LINKED_IN_CONSUMER_SECRET = 'asdf'
     TWITTER_CONSUMER_KEY = 'asdf'
@@ -65,15 +83,17 @@ Include references to Django-Social-User urls in urls.py:
 
 To begin the oauth process with a social network, expose the following link to an enduser:
 
-    <a href="{% url 'django_social_user:authorize' 'linkedin' %}">Sign in with LinkedIn</a>
-    <a href="{% url 'django_social_user:authorize' 'twitter' %}">Sign in with Twitter</a>
+    <a href="{% url 'django_social_user:authenticate' 'facebook' %}">Sign in with Facebook</a>
+    <a href="{% url 'django_social_user:authenticate' 'linkedin' %}">Sign in with LinkedIn</a>
+    <a href="{% url 'django_social_user:authenticate' 'twitter' %}">Sign in with Twitter</a>
 
 Todo
 ====
 
-1. Support facebook
-2. Support google
-3. Support openid
-4. Better error handling
-5. Asynchronous/JS driven authentication, instead of browser redirects
-6. Decouple APIs from this infrastructure and allow API customization
+~~1. Support facebook~~
+2. django_social_user should support South migrations
+3. Support google
+4. Support openid
+5. Better error handling
+6. Asynchronous/JS driven authentication, instead of browser redirects
+7. Decouple APIs from this infrastructure and allow API customizatio
