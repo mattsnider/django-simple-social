@@ -4,7 +4,6 @@ from urllib import urlencode
 from django.conf import settings
 from django.core.urlresolvers import reverse
 from django.core.validators import email_re
-from django_social_user import register_backend
 from django_social_user.backends import GenericSocialUserBackend
 from django_social_user.exceptions import SocialOauthDictFailed
 
@@ -123,7 +122,6 @@ class FacebookBackend(GenericSocialUserBackend):
             return oauth_obj['username']
         else:
             return oauth_obj['id']
-register_backend(FacebookBackend)
 
 
 class LinkedInBackend(GenericSocialUserBackend):
@@ -213,7 +211,6 @@ class LinkedInBackend(GenericSocialUserBackend):
     def get_username(self, oauth_obj):
         return '%s %s' % (
             self.get_first_name(oauth_obj), self.get_last_name(oauth_obj))
-register_backend(LinkedInBackend)
 
 
 class TwitterBackend(GenericSocialUserBackend):
@@ -330,4 +327,3 @@ class TwitterBackend(GenericSocialUserBackend):
             'oauth_token': access_token['oauth_token'],
             'oauth_token_secret': access_token['oauth_token_secret'],
             }
-register_backend(TwitterBackend)
