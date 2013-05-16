@@ -1,3 +1,6 @@
+v0.1.9, 04/16/2013
+- merging pull request to use native Django remote backend
+
 v0.1.8, 1/26/2013 -- Allowing parameters to be passed to the get_oauth_authorization_url, and passing scope to facebook.
 
 v0.1.7, 11/5/2012 -- Added django driven options and support for facebook using facebook-sdk

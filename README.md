@@ -62,7 +62,7 @@ Register any social network backends you want to use in your settings.py:
 
 Add any required API keys (backend dependent) to settings.py, here are some examples:
 
-    FACEBOOK_CONSUMER_KEY = 'asdf'
+    FACEBOOK_CONSUMER_KEY = 'asdf' # this is the APP_ID
     FACEBOOK_CONSUMER_SECRET = 'asdf'
     LINKED_IN_CONSUMER_KEY = 'asdf'
     LINKED_IN_CONSUMER_SECRET = 'asdf'
